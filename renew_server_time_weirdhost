@@ -6,9 +6,9 @@ def renew_server_time():
     使用 API Key 调用 /api/client/notfreeservers/<id>/renew 接口
     来自动续期 WeirdHost 服务器时间。
     """
-    api_key = os.environ.get("API_KEY")
+    api_key = os.environ.get("WEIRDHOST_API_KEY")
     if not api_key:
-        print("❌ 错误: 未设置环境变量 API_KEY。")
+        print("❌ 错误: 未设置环境变量 WEIRDHOST_API_KEY。")
         return False
 
     server_id = "0f4424f2-3633-4861-b4bf-e2a31ff2067c"
