@@ -1,0 +1,25 @@
+name: Renew WeirdHost Server Time
+
+on:
+  schedule:
+    - cron: "0 0 */3 * *"  # 每6小时执行一次
+  workflow_dispatch:
+
+jobs:
+  renew:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run renewal script
+        env:
+          PTERODACTYL_API_KEY: ${{ secrets.API_KEY }}
+        run: python renew_server_time_weirdhost.py
