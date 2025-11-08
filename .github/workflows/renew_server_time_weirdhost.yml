@@ -22,4 +22,6 @@ jobs:
       - name: Run renewal script
         env:
           WEIRDHOST_API_KEY: ${{ secrets.WEIRDHOST_API_KEY}}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python renew_server_time_weirdhost.py
