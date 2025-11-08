@@ -5,10 +5,12 @@ def send_telegram_message(message):
     """
     通过 Telegram Bot 发送消息。
     """
+    server_name = "weirdhost"  # 服务器名称
+    
     bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID")
     if not bot_token or not chat_id:
-        print("❌ 错误: 未设置 Telegram Bot Token 或 Chat ID。")
+        print("❌ {server_name} 错误: 未设置 Telegram Bot Token 或 Chat ID。")
         return
 
     telegram_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
@@ -20,13 +22,13 @@ def send_telegram_message(message):
     try:
         response = requests.post(telegram_url, params=params)
         if response.status_code == 200:
-            print("✅ weirdhost服务器 消息发送成功！")
+            print("✅ {server_name}服务器消息发送成功！")
             print("响应内容:", response.text)
         else:
-            print(f"❌ weirdhost服务器 消息发送失败: {response.status_code}")
+            print(f"❌ {server_name} 服务器消息发送失败: {response.status_code}")
             print("响应内容:", response.text)
     except Exception as e:
-        print(f"❌ weirdhost服务器请求失败: {e}")
+        print(f"❌ {server_name}服务器请求失败: {e}")
 
 def renew_server_time():
     """
