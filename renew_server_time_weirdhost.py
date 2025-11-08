@@ -56,17 +56,17 @@ def renew_server_time():
         response = requests.post(renew_url, headers=headers, timeout=15)
     except Exception as e:
         print(f"❌ 请求失败: {e}")
-        send_telegram_message(f"❌ 服务器续期请求失败: {e}")
+        send_telegram_message(f"❌ {server_name}服务器续期请求失败: {e}")
         return False
 
     if response.status_code in (200, 204):
-        print("✅ 服务器续期成功！")
-        send_telegram_message("✅ 服务器续期成功！")
+        print("✅ {server_name}服务器续期成功！")
+        send_telegram_message("✅ {server_name}服务器续期成功！")
         return True
     else:
-        print(f"❌ 续期失败 ({response.status_code})")
+        print(f"❌ {server_name}续期失败 ({response.status_code})")
         print("响应内容:", response.text)
-        send_telegram_message(f"❌ 服务器续期失败: 状态码 {response.status_code}\n响应内容: {response.text}")
+        send_telegram_message(f"❌ {server_name}服务器续期失败: 状态码 {response.status_code}\n响应内容: {response.text}")
         return False
 
 
