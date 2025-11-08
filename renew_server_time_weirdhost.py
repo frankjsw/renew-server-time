@@ -20,12 +20,13 @@ def send_telegram_message(message):
     try:
         response = requests.post(telegram_url, params=params)
         if response.status_code == 200:
-            print("✅ Telegram 消息发送成功！")
+            print("✅ weirdhost服务器 消息发送成功！")
+            print("响应内容:", response.text)
         else:
-            print(f"❌ Telegram 消息发送失败: {response.status_code}")
+            print(f"❌ weirdhost服务器 消息发送失败: {response.status_code}")
             print("响应内容:", response.text)
     except Exception as e:
-        print(f"❌ 请求失败: {e}")
+        print(f"❌ weirdhost服务器请求失败: {e}")
 
 def renew_server_time():
     """
